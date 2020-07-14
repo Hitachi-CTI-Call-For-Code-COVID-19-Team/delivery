@@ -1,6 +1,6 @@
 // IBM Cloud Functions: main function
 // generate dummy sensor data
-module.exports = function main(args) {
+function main(args) {
   return new Promise(function (resolve, _) {
     // get assets
     // FIXME: get from asset data collections
@@ -22,12 +22,15 @@ module.exports = function main(args) {
     const data = [];
     let counter = 0;
     assets.forEach(e => {
+      // first one
+      data.push(generate(e.deviceType, e.deviceId, e.eventType, new Date(), e.sensorId));
+
       timers.push(setInterval(() => {
-        if (++counter > assets.length * 5) {
-          timers.forEach(e => clearInterval(e));
-          return resolve(data);
-        }
         data.push(generate(e.deviceType, e.deviceId, e.eventType, new Date(), e.sensorId));
+        if (++counter >= assets.length * 5) {
+          timers.forEach(e => clearInterval(e));
+          return resolve({ payload: data });
+        }
       }, 10000));
     });
   });
