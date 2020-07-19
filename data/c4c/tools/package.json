@@ -1,0 +1,18 @@
+{
+  "name": "tools-lib",
+  "version": "1.0.0",
+  "description": "this package.json is for javascripts under  data/tools.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node create-assets.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.rdcloud.intra.hitachi.co.jp/call-for-code-2020/covid-19/delivery.git"
+  },
+  "author": "Hiroshi Nakagoe",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "lodash": "^4.17.19"
+  }
+}

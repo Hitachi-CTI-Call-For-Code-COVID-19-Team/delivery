@@ -1,0 +1,25 @@
+{
+  "name": "dummy-data-generator",
+  "main": "dummy.bundle.js",
+  "version": "1.0.0",
+  "description": "creating dunmy sensor data genrated from each asset",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node ./node_modules/webpack/bin/webpack.js --config webpack.config.js",
+    "deploy:ibm": "ibmcloud fn action update ${PACKAGE}/${ACTION} dummy-generator.bundle.js --timeout 90000 --kind nodejs:10 --param-file ./config.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.rdcloud.intra.hitachi.co.jp/call-for-code-2020/covid-19/delivery.git"
+  },
+  "author": "Hiroshi Nakagoe",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@cloudant/cloudant": "^4.2.4",
+    "kafka-node": "^5.0.0"
+  },
+  "devDependencies": {
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12"
+  }
+}

@@ -1,2 +1,14 @@
 # dist
 .env-*
+.credentials
+config.json
+*.bundle.*
+
+# sdk
+.vscode
+
+# temp
+~*.pptx
+node_modules/
+# we don't need it since it's for test
+package-lock.json
