@@ -247,35 +247,32 @@ function pushdata(params, data) {
       console.log('on tap to push data to streams');
 
       // send messages
-      producer.send(payloads, (err, data) => {
-        if (err) {
-          console.error(`got error by send(): ${err}`);
-          return reject(new Error(`got error by send(): ${err}`));
-        }
-        resolve({ message: `all data was sent: ${data}` });
-      });
-
-      // currently, data recorder only support one by one sending
-      // payloads.forEach((payload, i) => {
-      //   let counter = 0;
-      //   const errors = [];
-      //   producer.send([payload], (err, data) => {
-      //     counter++;
-      //     if (err) {
-      //       console.error(`got error by send(): ${err}`);
-      //       errors.push(`${i}: ${err}`);
-      //     } else {
-      //       console.log(`${i}: data was sent correctly`);
-      //     }
-      //     if (counter >= payloads.length) {
-      //       if (errors.length) {
-      //         reject(errors);
-      //       } else {
-      //         resolve('all data was sent');
-      //       }
-      //     }
-      //   });
+      // producer.send(payloads, (err, data) => {
+      //   if (err) {
+      //     console.error(`got error by send(): ${err}`);
+      //     return reject(new Error(`got error by send(): ${err}`));
+      //   }
+      //   resolve({ message: `all data was sent: ${data}` });
       // });
+      // currently, data recorder only support one by one sending
+      let counter = 0;
+      const errors = [];
+      payloads.forEach((payload, i) => {
+        producer.send([payload], (err, data) => {
+          counter++;
+          if (err) {
+            console.error(`got error by send(): ${err}`);
+            errors.push(`${i}: ${err}`);
+          }
+          if (counter >= payloads.length) {
+            if (errors.length) {
+              reject(new Error(errors));
+            } else {
+              resolve({ message: 'all data was sent' });
+            }
+          }
+        });
+      });
     });
     producer.on('error', (err) => {
       console.error(`got error before sending message: ${err}`);
