@@ -80,13 +80,13 @@ def create(args):
 
 def delete(args):
   args = parse_args(args)
-  # app_id.delete(['-n', SERVICES['app_id'], '-g', args.resource_group])
-  # bucket = util.get_credentials_value(CREDENTIALS_FILE, UI_COMPONENTS_BUCKET)
-  # cos.delete([
-  #   '-n', SERVICES['cos'], '-g', args.resource_group, '-r', args.region,
-  #   '-b', bucket,
-  #   '-d', '../data/{}/floormap.png;{}'.format(args.tenant, bucket)
-  # ])
+  app_id.delete(['-n', SERVICES['app_id'], '-g', args.resource_group])
+  bucket = util.get_credentials_value(CREDENTIALS_FILE, UI_COMPONENTS_BUCKET)
+  cos.delete([
+    '-n', SERVICES['cos'], '-g', args.resource_group, '-r', args.region,
+    '-b', bucket,
+    '-d', '../data/{}/floormap.png;{}'.format(args.tenant, bucket)
+  ])
   # nosql.delete(['-n', SERVICES['cloudant'], '-g', args.resource_group])
   # es.create(['-n', SERVICES['event_streams'], '-g', args.resource_group])
   post_delete()
