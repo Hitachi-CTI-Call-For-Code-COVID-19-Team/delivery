@@ -6,11 +6,14 @@ Please install `pipenv`, `node`, and `npm`.
 
 ## How to Deploy
 
-Before deploying this application, please create your IBM Cloud resource group environment.
+Before deploying this application, please create your IBM Cloud resource group environment. Then, please clone our solution that consists of multiple repos in [GitHub covsafe](http://example.com).
+
+Here, we are under the assumption that you clone all repos within `/path/to/covsafe_group`.
 
 ```sh
+cd /path/to/covsafe_group
 # if you want sample assets data to be set, please these two commands below.
-cd data/c4c/tools
+cd ./delivery/data/c4c/tools
 npm install
 npm start
 
@@ -22,7 +25,18 @@ pipenv install
 pipenv run python main.py -o create -p covsafe -t c4c -r jp-tok -g c4c-civid-19
 ```
 
-After coffee break, access to the URL shown in the bottom of the script output with login credentials: username: "user@fake.email" and password "password".
+After coffee break and the above command is finished, please deploy some services by following the next.
+
+```sh
+# deploy view
+cd /path/to/covsafe_group
+
+# deploy getters
+```
+
+
+
+access to the URL shown in the bottom of the script output with login credentials: username: "user@fake.email" and password "password".
 
 ## How to Create Dummy Data
 

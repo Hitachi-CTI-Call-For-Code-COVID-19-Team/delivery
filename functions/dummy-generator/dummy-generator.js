@@ -23,12 +23,14 @@ function main(params) {
         function generateAndPush(assets) {
           return new Promise(function (resolve, reject) {
             const data = [];
-            assets.forEach(e => {
+            assets.forEach((e, i) => {
               if (['site', 'building', 'outside', 'floor'].some(t => t === e.doc.type)) {
                 // no need to create events
                 return;
               }
-              data.push(generate(e.doc.id, e.doc.type, e.doc.subType, new Date(), e.doc.settings));
+              // the same timespamp of all data might cause an error when getting data from es
+              let date = new Date(new Date().getTime() + i)
+              data.push(generate(e.doc.id, e.doc.type, e.doc.subType, date, e.doc.settings));
             });
 
             if (!data.length) {

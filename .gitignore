@@ -8,6 +8,7 @@ config.json
 .vscode
 
 # temp
+.DS_Store
 ~*.pptx
 node_modules/
 # we don't need it since it's for test
