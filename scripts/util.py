@@ -332,6 +332,27 @@ def bind_functions_to_service_credentials(target, service, key):
     )
     raise Exception('cannot bind a package/action {} to a service {}'.format(target, service))
 
+def bind_functions_predefined_to(target, package):
+  print(
+    bcolors.OKGREEN +
+    'Starting to bind a {} to a my env {}'.format(target, package) +
+    bcolors.ENDC
+  )
+
+  p1 = subprocess.Popen([
+    'ibmcloud', 'fn', 'package', 'bind', target, package
+  ], stdout=subprocess.PIPE)
+  wait = p1.communicate()
+  if p1.returncode == 0:
+    print(bcolors.OKGREEN + wait[0].decode('utf-8') + bcolors.ENDC)
+  else:
+    print(
+      bcolors.FAIL +
+      'cannot bind a {} to my env {}'.format(target, package) +
+      bcolors.ENDC
+    )
+    raise Exception('cannot bind a {} to my env {}'.format(target, package))
+
 def get_functions_action_list(namespace, package):
   print(
     bcolors.OKGREEN +
@@ -359,6 +380,26 @@ def get_functions_action_list(namespace, package):
     ))))
   else:
     return []
+
+def get_functions_package_or_action_parameters(isAction, target):
+  # ibmcloud fn package get myCloudant parameters
+  print(
+    bcolors.OKGREEN + 'Starting to get params of {}'.format(target) + bcolors.ENDC
+  )
+
+  p1 = subprocess.Popen([
+    'ibmcloud', 'fn', '{}'.format('action' if isAction is True else 'package'),
+    'get', target, 'parameters'
+  ], stdout=subprocess.PIPE)
+  wait = p1.communicate()
+  if p1.returncode == 0:
+    print(bcolors.OKGREEN + wait[0].decode('utf-8') + bcolors.ENDC)
+  else:
+    print(
+      bcolors.FAIL + 'cannot get params of {}'.format(target) + bcolors.ENDC
+    )
+    raise Exception('cannot get params of {}'.format(target))
+
 
 def delete_functions_action(package, action):
   print(bcolors.OKGREEN + 'Starting to delete a functions action' + bcolors.ENDC)
