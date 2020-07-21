@@ -40,7 +40,7 @@ def create_service_instance(instance_name, service, service_plan, region):
       'ibmcloud', 'resource', 'service-instance-create', instance_name, service,
       service_plan, region, '-p', '{"legacyCredentials": false}'
     ])
-    wait = p1.communicate()
+    p1.communicate()
 
     if p1.returncode != 0:
       print(bcolors.FAIL + 'failed to create instance {}'.format(instance_name) + bcolors.ENDC)
@@ -192,6 +192,22 @@ def create_functions_namespace(namespace):
   p1 = subprocess.Popen(['ibmcloud', 'fn', 'property', 'set', '--namespace', namespace], stdout=subprocess.PIPE)
   print(p1.communicate()[0].decode('utf-8'))
 
+def check_functions_package_exists(package):
+  print(bcolors.OKGREEN + 'Starting to check if {} exists'.format(package) + bcolors.ENDC)
+
+  p1 = subprocess.Popen(
+    ['ibmcloud', 'fn', 'package', 'list'], stdout=subprocess.PIPE
+  )
+  p2 = subprocess.Popen(['grep', package], stdin=p1.stdout, stdout=subprocess.PIPE)
+  p2.communicate()
+
+  if p2.returncode != 0:
+    print(bcolors.OKGREEN + 'no {} package'.format(package) + bcolors.ENDC)
+    return False
+
+  print(bcolors.OKGREEN + '{} exists'.format(package) + bcolors.ENDC)
+  return True
+
 def create_functions_package(package):
   print(bcolors.OKGREEN + 'Starting to create a functions package' + bcolors.ENDC)
 
@@ -294,6 +310,56 @@ def create_functions_sequence(sequence, actions, *args):
   else:
     print(wait[0].decode('utf-8'))
 
+# service is not insance name but service type, like cloud-object-storage
+def bind_functions_to_service_credentials(target, service, key):
+  print(
+    bcolors.OKGREEN +
+    'Starting to bind a package/action {} to a service {}'.format(target, service) +
+    bcolors.ENDC
+  )
+
+  p1 = subprocess.Popen([
+    'ibmcloud', 'fn', 'service', 'bind', service, target, '--keyname', key
+  ], stdout=subprocess.PIPE)
+  wait = p1.communicate()
+  if p1.returncode == 0:
+    print(bcolors.OKGREEN + wait[0].decode('utf-8') + bcolors.ENDC)
+  else:
+    print(
+      bcolors.FAIL +
+      'cannot bind a package/action {} to a service {}'.format(target, service) +
+      bcolors.ENDC
+    )
+    raise Exception('cannot bind a package/action {} to a service {}'.format(target, service))
+
+def get_functions_action_list(namespace, package):
+  print(
+    bcolors.OKGREEN +
+    'Starting to get action list {}/{}'.format(namespace, package) +
+    bcolors.ENDC
+  )
+
+  p1 = subprocess.Popen([
+    'ibmcloud', 'fn', 'property', 'set', '--namespace', namespace
+  ], stdout=subprocess.PIPE)
+  wait = p1.communicate()
+  if p1.returncode == 0:
+    # ibmcloud fn action list event-streams | awk '/event-streams/ {print $1}' | sed -e 's@.*/event-streams/\(.*\)@\1@g'
+    p1 = subprocess.Popen(
+      ['ibmcloud', 'fn', 'action', 'list', package], stdout=subprocess.PIPE
+    )
+    p2 = subprocess.Popen(
+      ['awk', '/{}/ {{print $1}}'.format(package)], stdin=p1.stdout,
+      stdout=subprocess.PIPE
+    )
+    # sed doesn't work
+    wait = p2.communicate()
+    return list(map(lambda x: re.sub('.*/{}/(.*)'.format(package), '\\1', x), list(filter(
+      lambda x: len(x) > 0, wait[0].decode('utf-8').split('\n')
+    ))))
+  else:
+    return []
+
 def delete_functions_action(package, action):
   print(bcolors.OKGREEN + 'Starting to delete a functions action' + bcolors.ENDC)
 
@@ -338,7 +404,7 @@ def create_buckets(buckets, region, tenant_id):
     p1 = subprocess.Popen([
       'ibmcloud', 'cos', 'get-bucket-location', '--bucket', bucket
     ], stdout=subprocess.PIPE)
-    wait = p1.communicate()
+    p1.communicate()
 
     # create a bucket
     if p1.returncode != 0:
@@ -359,7 +425,7 @@ def delete_buckets(buckets, region):
     p1 = subprocess.Popen([
       'ibmcloud', 'cos', 'get-bucket-location', '--bucket', bucket
     ], stdout=subprocess.PIPE)
-    wait = p1.communicate()
+    p1.communicate()
 
     # delete a bucket
     if p1.returncode == 0:
