@@ -195,6 +195,18 @@ function generateCongestion(id, timestamp, options) {
 }
 
 function generateSanitization(id, timestamp) {
+  const MAX = 10;
+  return {
+    payload: {
+      handwashStand: `${id}`,
+      count: Math.floor(Math.random() * MAX),
+      period: PERIOD,
+    },
+    time: timestamp,
+  };
+}
+
+function generateDisinfection(id, timestamp) {
   const MAX_DEPTH = 100;
   const filled = Math.floor(Math.random() * MAX_DEPTH);
   return {
@@ -203,18 +215,6 @@ function generateSanitization(id, timestamp) {
       distance: filled,
       max_depth: MAX_DEPTH,
       amount_rate: Math.floor(((MAX_DEPTH - filled) / MAX_DEPTH) * 100),
-    },
-    time: timestamp,
-  };
-}
-
-function generateDisinfection(id, timestamp) {
-  const MAX = 10;
-  return {
-    payload: {
-      handwashStand: `${id}`,
-      count: Math.floor(Math.random() * MAX),
-      period: PERIOD,
     },
     time: timestamp,
   };

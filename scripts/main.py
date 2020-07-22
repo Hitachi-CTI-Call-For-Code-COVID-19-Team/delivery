@@ -13,7 +13,7 @@ import service_event_streams as es
 CREDENTIALS_FILE = './.credentials'
 UI_COMPONENTS_BUCKET = 'UI_COMPONENTS_BUCKET'
 COVSAFE_VIEW_REDIRECT_URL = 'COVSAFE_VIEW_REDIRECT_URL'
-ASSETS_DB = 'assets-new'
+ASSETS_DB = 'assets'
 SERVICES = {
   'app_id': 'app-id',
   'cos': 'cos',

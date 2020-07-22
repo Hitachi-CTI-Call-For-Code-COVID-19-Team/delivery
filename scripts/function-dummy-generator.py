@@ -7,7 +7,7 @@ import sys
 import json
 import util
 
-ASSETS_DB = 'assets-new'
+ASSETS_DB = 'assets'
 ES_TOPIC = 'covsafe'
 
 def parse_args(args):
