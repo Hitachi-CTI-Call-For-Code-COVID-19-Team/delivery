@@ -192,6 +192,20 @@ def create_functions_namespace(namespace):
   p1 = subprocess.Popen(['ibmcloud', 'fn', 'property', 'set', '--namespace', namespace], stdout=subprocess.PIPE)
   print(p1.communicate()[0].decode('utf-8'))
 
+def get_functions_namespace_id(namespace):
+  print(bcolors.OKGREEN + 'Starting to get a functions namespace id' + bcolors.ENDC)
+
+  p1 = subprocess.Popen(['ibmcloud', 'fn', 'namespace', 'list'], stdout=subprocess.PIPE)
+  p2 = subprocess.Popen(['awk', '/^{}/ {{print $3}}'.format(namespace)],
+    stdin=p1.stdout, stdout=subprocess.PIPE)
+  wait = p2.communicate()
+  id = wait[0].decode('utf-8')
+  if len(id) == 0:
+    print(bcolors.FAIL + 'cannot get id of {}'.format(namespace) + bcolors.ENDC)
+    raise Exception('cannot get id of {}'.format(namespace))
+
+  return id
+
 def check_functions_package_exists(package):
   print(bcolors.OKGREEN + 'Starting to check if {} exists'.format(package) + bcolors.ENDC)
 
@@ -242,6 +256,20 @@ def create_functions_action(package, action, file, kind, timeout):
   if p1.returncode != 0:
     print(bcolors.FAIL + 'cannot create/update action {}/{}'.format(package, action) + bcolors.ENDC)
     raise Exception('cannot create/update action {}/{}'.format(package, action))
+
+def update_functions_action_to_web(package, action, web_type):
+  print(bcolors.OKGREEN + 'Starting to update a functions action to web' + bcolors.ENDC)
+
+  p1 = subprocess.Popen([
+    'ibmcloud', 'fn', 'action', 'update', '{}/{}'.format(package, action),
+    '--web', web_type
+  ], stdout=subprocess.PIPE)
+  wait = p1.communicate()
+  if p1.returncode == 0:
+    print(bcolors.OKBLUE + '{}'.format(wait[0].decode('utf-8')) + bcolors.ENDC)
+  else:
+    print(bcolors.FAIL + 'cannot update action {}/{} to web'.format(package, action) + bcolors.ENDC)
+    raise Exception('cannot update action {}/{} to web'.format(package, action))
 
 # you can add additional parameters for feed and trigger, like '--feed' 'something', ...
 def create_functions_trigger(trigger, *args):
@@ -300,15 +328,52 @@ def create_functions_rule(rule, trigger, package, action):
 def create_functions_sequence(sequence, actions, *args):
   print(bcolors.OKGREEN + 'Starting to create a sequece {}'.format(sequence) + bcolors.ENDC)
 
-  p1 = subprocess.Popen([
-    'ibmcloud', 'fn', 'action', 'create', sequence, '--sequence', ','.join(actions)
-  ] + list(args), stdout=subprocess.PIPE)
-  wait = p1.communicate()
-  if p1.returncode != 0:
-    print(bcolors.FAIL + 'cannot create/update sequence {}'.format(sequence) + bcolors.ENDC)
-    raise Exception('cannot create/update sequence {}'.format(sequence))
+  p1 = subprocess.Popen(['ibmcloud', 'fn', 'action', 'list'], stdout=subprocess.PIPE)
+  p2 = subprocess.Popen(
+    ['grep', '{}'.format(sequence)], stdin=p1.stdout, stdout=subprocess.PIPE
+  )
+  p3 = subprocess.Popen(['wc', '-l'], stdin=p2.stdout, stdout=subprocess.PIPE)
+  res = p3.communicate()[0]
+
+  if int(res.decode('utf-8').strip()) == 0:
+    p1 = subprocess.Popen([
+      'ibmcloud', 'fn', 'action', 'create', sequence, '--sequence', ','.join(actions)
+    ] + list(args), stdout=subprocess.PIPE)
+    wait = p1.communicate()
+    if p1.returncode != 0:
+      print(bcolors.FAIL + 'cannot create/update sequence {}'.format(sequence) + bcolors.ENDC)
+      raise Exception('cannot create/update sequence {}'.format(sequence))
+    else:
+      print(wait[0].decode('utf-8'))
   else:
-    print(wait[0].decode('utf-8'))
+    print(bcolors.OKBLUE + 'skip to create sequence {}'.format(sequence) + bcolors.ENDC)
+
+# if you want to add '--config-file FILE', use *args
+def create_functions_api(api_name, base_path, api_path, api_verb, action, response_type, *args):
+  print(bcolors.OKGREEN + 'Starting to create an api {}'.format(api_name) + bcolors.ENDC)
+
+  p1 = subprocess.Popen(['ibmcloud', 'fn', 'api', 'list'], stdout=subprocess.PIPE)
+  p2 = subprocess.Popen(
+    ['grep', '{}{}'.format(base_path, api_path)], stdin=p1.stdout, stdout=subprocess.PIPE
+  )
+  p3 = subprocess.Popen(['wc', '-l'], stdin=p2.stdout, stdout=subprocess.PIPE)
+  res = p3.communicate()[0]
+
+  if int(res.decode('utf-8').strip()) == 0:
+    p1 = subprocess.Popen([
+      'ibmcloud', 'fn', 'api', 'create', base_path, api_path, api_verb, action,
+      '--apiname', api_name, '--response-type', response_type
+    ] + list(args), stdout=subprocess.PIPE)
+    wait = p1.communicate()
+  
+    if p1.returncode != 0:
+      print(bcolors.FAIL + 'cannot create api {}'.format(api_name) + bcolors.ENDC)
+      raise Exception('cannot create api {}'.format(api_name))
+    else:
+      print(wait[0].decode('utf-8'))
+  else:
+    print(bcolors.OKBLUE + 'Skip to craete an api {}'.format(api_name) + bcolors.ENDC)
+
 
 # service is not insance name but service type, like cloud-object-storage
 def bind_functions_to_service_credentials(target, service, key):
