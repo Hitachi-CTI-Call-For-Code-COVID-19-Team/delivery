@@ -1,4 +1,4 @@
-# Scripts to Deliver Our Solution and Dataset
+# Delivery Tools for COVSAFE
 
 ## Prerequisites
 
@@ -76,7 +76,7 @@ Go to `/path/to/COVSAFE/covsafe-view` and see the README. For demonstration, it'
 
 After your deployment of covsafe-view, covsafe-view URL should be shown with the keyword "Please access to:". Access to the URL with login credentials. If you don't change the default username and password, just use username: "user@fake.email" and password "password".
 
-## How to Create Dummy Data
+## How to create dummy data
 
 If you use the tenant "c4c", we prepare the dummy data generator of the sensors that are imagined to be placed at the imaginary shopping mall to have a fun without any physical sensors. If you would like to get it, kick these commands below.
 
@@ -88,7 +88,7 @@ cd scripts
 pipenv run python function_dummy_generator.py -o create -r jp-tok -g covid-19-dev -n dummy-generator -p dummy-generator -a dummy-generator -t dummy-generator-trigger -u dummy-generator-rule -c ./.credentials
 ```
 
-## How to Delete the Solution
+## How to delete COVSAFE
 
 ```sh
 # dploy covsafe solution
