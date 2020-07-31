@@ -105,8 +105,8 @@ Here is the asset structure for an example.
       "line-people_counter-0001"
     ],
     "mapCoordinate": {
-        "x": 100,
-        "y": 100,
+        "lat": 100,
+        "lng": 100,
         "height": 20,
         "width": 300
     },
@@ -122,8 +122,8 @@ Here is the asset structure for an example.
     "belongs": "floor-nonowa_west-0001",
     "belongings": [],
     "mapCoordinate": {
-        "x": 100,
-        "y": 100,
+        "lat": 100,
+        "lng": 100,
         "height": 20,
         "width": 300
     },
@@ -139,8 +139,8 @@ Here is the asset structure for an example.
     "belongs": "floor-nonowa_west-0001",
     "belongings": [],
     "mapCoordinate": {
-        "x": 100,
-        "y": 200,
+        "lat": 100,
+        "lng": 200,
         "height": 20,
         "width": 300
     },
@@ -159,8 +159,8 @@ Here is the asset structure for an example.
       "garbage_bin-0001"
     ],
     "mapCoordinate": {
-        "x": 100,
-        "y": 400,
+        "lat": 100,
+        "lng": 400,
         "height": 50,
         "width": 50
     },
@@ -176,8 +176,8 @@ Here is the asset structure for an example.
     "belongs": "floor-nonowa_west-0001",
     "belongings": [],
     "mapCoordinate": {
-        "x": 200,
-        "y": 400,
+        "lat": 200,
+        "lng": 400,
         "height": 50,
         "width": 50
     },
@@ -193,8 +193,8 @@ Here is the asset structure for an example.
     "belongs": "area-toilet_man-0001",
     "belongings": [],
     "mapCoordinate": {
-        "x": 100,
-        "y": 400,
+        "lat": 100,
+        "lng": 400,
         "height": 50,
         "width": 50
     },
@@ -210,8 +210,8 @@ Here is the asset structure for an example.
     "belongs": "area-toilet_woman-0001",
     "belongings": [],
     "mapCoordinate": {
-        "x": 200,
-        "y": 400,
+        "lat": 200,
+        "lng": 400,
         "height": 50,
         "width": 50
     },
@@ -229,8 +229,8 @@ Here is the asset structure for an example.
       "handwash_monitor-0001"
     ],
     "mapCoordinate": {
-        "x": 130,
-        "y": 400,
+        "lat": 130,
+        "lng": 400,
         "height": 10,
         "width": 10
     },
@@ -248,8 +248,8 @@ Here is the asset structure for an example.
       "garbage_bin_monitor-0001"
     ],
     "mapCoordinate": {
-        "x": 140,
-        "y": 400,
+        "lat": 140,
+        "lng": 400,
         "height": 50,
         "width": 50
     },
@@ -265,8 +265,8 @@ Here is the asset structure for an example.
     "belongs": "floor-nonowa_west-0001",
     "belongings": [],
     "mapCoordinate": {
-        "x": 110,
-        "y": 110,
+        "lat": 110,
+        "lng": 110,
         "height": 0,
         "width": 0
     },
@@ -282,8 +282,8 @@ Here is the asset structure for an example.
     "belongs": "floor-nonowa_west-0001",
     "belongings": [],
     "mapCoordinate": {
-        "x": 51,
-        "y": 51,
+        "lat": 51,
+        "lng": 51,
         "height": 0,
         "width": 0
     },
@@ -301,8 +301,8 @@ Here is the asset structure for an example.
     "belongs": "handwash_stand-0001",
     "belongings": [],
     "mapCoordinate": {
-        "x": 51,
-        "y": 51,
+        "lat": 51,
+        "lng": 51,
         "height": 0,
         "width": 0
     },
