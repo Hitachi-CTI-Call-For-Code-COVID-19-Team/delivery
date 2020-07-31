@@ -62,7 +62,7 @@ After deployment, if you would like to get sample data generated from imaginal s
 export APIKEY=YOUR_API_KEY
 cd scripts
 # change some variables for your env, like resource group
-pipenv run python function-dummy-generator.py -o create -r jp-tok -g c4c-covid-19 -n dummy-generator -p dummy-generator -a dummy-generator -t dummy-generator-trigger -u dummy-generator-rule -c ./.credentials
+pipenv run python function_dummy_generator.py -o create -r jp-tok -g c4c-covid-19 -n dummy-generator -p dummy-generator -a dummy-generator -t dummy-generator-trigger -u dummy-generator-rule -c ./.credentials
 ```
 
 ## How to Delete the Solution

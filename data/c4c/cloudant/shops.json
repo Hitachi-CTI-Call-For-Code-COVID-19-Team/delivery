@@ -1,0 +1,170 @@
+[
+  {
+    "name": "24/365 Express",
+    "image": {
+      "url": "https://6e2441e9.jp-tok.apigw.appdomain.cloud/public/api/files",
+      "options": {
+        "method": "post",
+        "body": "{\"bucket\": \"d9005029-78e6-4e11-8d2c-fcbbac0bca7a\", \"key\": \"24-365-express.png\"}",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "image/*"
+        }
+      }
+    }
+  },
+  {
+    "name": "Conn Group",
+    "image": {
+      "url": "https://6e2441e9.jp-tok.apigw.appdomain.cloud/public/api/files",
+      "options": {
+        "method": "post",
+        "body": "{\"bucket\": \"d9005029-78e6-4e11-8d2c-fcbbac0bca7a\", \"key\": \"conn-group.png\"}",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "image/*"
+        }
+      }
+    }
+  },
+  {
+    "name": "Dans Donuts",
+    "image": {
+      "url": "https://6e2441e9.jp-tok.apigw.appdomain.cloud/public/api/files",
+      "options": {
+        "method": "post",
+        "body": "{\"bucket\": \"d9005029-78e6-4e11-8d2c-fcbbac0bca7a\", \"key\": \"dans-donuts.png\"}",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "image/*"
+        }
+      }
+    }
+  },
+  {
+    "name": "Fresh Jerde",
+    "image": {
+      "url": "https://6e2441e9.jp-tok.apigw.appdomain.cloud/public/api/files",
+      "options": {
+        "method": "post",
+        "body": "{\"bucket\": \"d9005029-78e6-4e11-8d2c-fcbbac0bca7a\", \"key\": \"fresh-jerde.png\"}",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "image/*"
+        }
+      }
+    }
+  },
+  {
+    "name": "Gibson",
+    "image": {
+      "url": "https://6e2441e9.jp-tok.apigw.appdomain.cloud/public/api/files",
+      "options": {
+        "method": "post",
+        "body": "{\"bucket\": \"d9005029-78e6-4e11-8d2c-fcbbac0bca7a\", \"key\": \"gibson.png\"}",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "image/*"
+        }
+      }
+    }
+  },
+  {
+    "name": "Green Orchard",
+    "image": {
+      "url": "https://6e2441e9.jp-tok.apigw.appdomain.cloud/public/api/files",
+      "options": {
+        "method": "post",
+        "body": "{\"bucket\": \"d9005029-78e6-4e11-8d2c-fcbbac0bca7a\", \"key\": \"green-orchard.png\"}",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "image/*"
+        }
+      }
+    }
+  },
+  {
+    "name": "Hana Heidenreich",
+    "image": {
+      "url": "https://6e2441e9.jp-tok.apigw.appdomain.cloud/public/api/files",
+      "options": {
+        "method": "post",
+        "body": "{\"bucket\": \"d9005029-78e6-4e11-8d2c-fcbbac0bca7a\", \"key\": \"hana-heidenreich.png\"}",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "image/*"
+        }
+      }
+    }
+  },
+  {
+    "name": "Holistic Integrate",
+    "image": {
+      "url": "https://6e2441e9.jp-tok.apigw.appdomain.cloud/public/api/files",
+      "options": {
+        "method": "post",
+        "body": "{\"bucket\": \"d9005029-78e6-4e11-8d2c-fcbbac0bca7a\", \"key\": \"holistic-integrate.png\"}",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "image/*"
+        }
+      }
+    }
+  },
+  {
+    "name": "Jaskolski Bechtelar",
+    "image": {
+      "url": "https://6e2441e9.jp-tok.apigw.appdomain.cloud/public/api/files",
+      "options": {
+        "method": "post",
+        "body": "{\"bucket\": \"d9005029-78e6-4e11-8d2c-fcbbac0bca7a\", \"key\": \"jaskolski-bechtelar.png\"}",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "image/*"
+        }
+      }
+    }
+  },
+  {
+    "name": "Plug-And-Play Technologies",
+    "image": {
+      "url": "https://6e2441e9.jp-tok.apigw.appdomain.cloud/public/api/files",
+      "options": {
+        "method": "post",
+        "body": "{\"bucket\": \"d9005029-78e6-4e11-8d2c-fcbbac0bca7a\", \"key\": \"plug-and-play-technologies.png\"}",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "image/*"
+        }
+      }
+    }
+  },
+  {
+    "name": "Schumm Inc",
+    "image": {
+      "url": "https://6e2441e9.jp-tok.apigw.appdomain.cloud/public/api/files",
+      "options": {
+        "method": "post",
+        "body": "{\"bucket\": \"d9005029-78e6-4e11-8d2c-fcbbac0bca7a\", \"key\": \"schumm-inc.png\"}",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "image/*"
+        }
+      }
+    }
+  },
+  {
+    "name": "Versatile Leading Edge",
+    "image": {
+      "url": "https://6e2441e9.jp-tok.apigw.appdomain.cloud/public/api/files",
+      "options": {
+        "method": "post",
+        "body": "{\"bucket\": \"d9005029-78e6-4e11-8d2c-fcbbac0bca7a\", \"key\": \"versatile-leading-edge.png\"}",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "image/*"
+        }
+      }
+    }
+  }
+]

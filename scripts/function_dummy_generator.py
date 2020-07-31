@@ -88,7 +88,7 @@ def create(args):
 
   # create trigger
   # you are able to see its activation by polling the log by `ibmcloud fn activation poll`
-  util.create_functions_periodical_trigger(args.trigger, '"* * * * *"')
+  util.create_functions_periodical_trigger(args.trigger, '"*/5 * * * *"')
   util.create_functions_rule(args.rule, args.trigger, args.package, args.action)
 
 

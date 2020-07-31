@@ -2,8 +2,8 @@ const Cloudant = require('@cloudant/cloudant');
 const kafka = require('kafka-node');
 const { fill } = require('lodash');
 
-const PERIOD = 30000;
-const PERIODIC_TRIGGER_PERIOD = 60000;
+const PERIOD = 1000 * 60 * 5;
+const PERIODIC_TRIGGER_PERIOD = 1000 * 60 * 5;
 const LOOP = Math.floor(PERIODIC_TRIGGER_PERIOD / PERIOD - 1);
 
 // IBM Cloud Functions: main function
@@ -44,8 +44,12 @@ function main(params) {
 
         // fist one done immediately
         generateAndPush(assets)
-          .then(res => console.log(`done the first genrating and pushing: ${res}`))
-          .catch(err => console.error(`got error while first generating: ${err}`));
+          .then(res => LOOP ? console.log(`done the first genrating and pushing: ${res}`) : resolve(res))
+          .catch(err => LOOP ? console.error(`got error while first generating: ${err}`) : reject(err));
+
+        if (!LOOP) {
+          return;
+        }
 
         // next ones
         const timers = [];

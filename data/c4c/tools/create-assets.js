@@ -206,14 +206,14 @@ var logicals = SUPERASSETS.concat(_.range(0, 1920, 60).reduce((p1, lng) => {
             if (lng >= 1740 && lat < 742.5) return 0.0;
             else if (lng >= 1800 && lat >= 540) return 0.0;
             else if (lng < 60 || lng >= 1860) return 0.0;
-            else if (lat < 135 || lat >= 877.5) return 0.3;
-            else if (lng < 480 && lat < 337.5) return 0.3;
-            else if (lng >= 1620 && lat < 270) return 0.3;
-            else if (lng >= 960 && lat >= 742.5) return 0.3;
-            else if (lng >= 1740 && lat >= 337.5) return 0.3;
-            else if (lng >= 1020 && lat >= 337.5 && lng < 1500 && lat < 607.5) return 0.9;
-            else if (lng >= 240 && lat >= 540 && lng < 600 && lat < 742.5) return 0.9;
-            else return 0.6;
+            else if (lat < 135 || lat >= 877.5) return 0.0;
+            else if (lng < 480 && lat < 337.5) return 0.0;
+            else if (lng >= 1620 && lat < 270) return 0.0;
+            else if (lng >= 960 && lat >= 742.5) return 0.0;
+            else if (lng >= 1740 && lat >= 337.5) return 0.0;
+            else if (lng >= 1020 && lat >= 337.5 && lng < 1500 && lat < 607.5) return 0.3;
+            else if (lng >= 240 && lat >= 540 && lng < 600 && lat < 742.5) return 0.3;
+            else return 0.1;
           })(),
         },
       });

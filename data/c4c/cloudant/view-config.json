@@ -1,0 +1,54 @@
+{
+  "form": {
+    "media": [
+      "Mobile",
+      "Signage placed at West entrance",
+      "Signage placed at East entrance",
+      "Signage placed at North entrance",
+      "Signage placed at South entrance"
+    ]
+  },
+  "map": {
+    "base": {
+      "maxZoom": 10,
+      "minZoom": 1,
+      "dragging": true,
+      "zoomControl": true,
+      "scrollWheelZoom": true
+    },
+    "floor": {
+      "link": {
+        "url": "https://78395355.jp-tok.apigw.appdomain.cloud/public/api/files",
+        "options": {
+          "method": "post",
+          "body": "{\"bucket\": \"d9005029-78e6-4e11-8d2c-fcbbac0bca7a\", \"key\": \"floormap.png\"}",
+          "headers": {
+            "content-type": "application/json",
+            "accept": "image/*"
+          }
+        }
+      },
+      "bounds": [
+        [0, 0],
+        [1080, 1920]
+      ]
+    },
+    "heat": {
+      "fitBoundsOnLoad": false,
+      "fitBoundsOnUpdate": false,
+      "max": 1,
+      "radius": 90,
+      "gradient": {
+        "0.3": "green",
+        "0.5": "orange",
+        "0.7": "red"
+      }
+    },
+    "ping": {
+      "duration": 3000,
+      "fps": 100,
+      "radiusRange": [3, 70]
+    },
+    "slider": {}
+  }
+}
