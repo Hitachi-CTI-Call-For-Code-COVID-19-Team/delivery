@@ -312,7 +312,7 @@ function createAssets() {
   // there are no phisical assets for this case
 
   // write to file
-  fs.writeFile(path.join(__dirname, '..', 'assets.json'), JSON.stringify(assets), (err) => {
+  fs.writeFile(path.join(__dirname, '..', 'cloudant', 'assets.json'), JSON.stringify(assets), (err) => {
     if (err) throw err;
   });
 

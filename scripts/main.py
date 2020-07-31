@@ -11,14 +11,17 @@ import service_cloudant as nosql
 import service_event_streams as es
 
 CREDENTIALS_FILE = './.credentials'
+COVSAFE_VIEW = 'covsafe-view'
+ES_TOPICS = 'covsafe'
+APPID_REGISTERED_APP = 'covsafe'
+APPID_REGISTERED_USER = 'user@fake.email:JamesSmith:password'
 UI_COMPONENTS_BUCKET = 'UI_COMPONENTS_BUCKET'
-COVSAFE_VIEW_REDIRECT_URL = 'COVSAFE_VIEW_REDIRECT_URL'
-ASSETS_DB = 'assets'
+CLOUDANT_DB = 'assets,assets_staff,view-config,log_risk_calculation,log_risk_notifier,a_notification_template,ads,shops'
 SERVICES = {
   'app_id': 'app-id',
   'cos': 'cos',
-  'cloudant': 'cloudant-dev',
-  'event_streams': 'Event Streams'
+  'cloudant': 'cloudant',
+  'event_streams': 'es'
 }
 
 # get arguments
@@ -45,34 +48,48 @@ def create(args):
 
   util.login(args.region, args.resource_group)
 
+  # create UI namespace for app ID
+  util.create_functions_namespace(COVSAFE_VIEW)
+  view_ns = util.get_functions_namespace_id(COVSAFE_VIEW)
+  view_api = 'https://{}.functions.appdomain.cloud/api/v1/web/{}/covsafe/view'.format(args.region, view_ns)
+
   # create IBM Event Streams
   es.create([
     '-r', args.region, '-g', args.resource_group, '-p', 'lite', '-n', SERVICES['event_streams'],
-    '-k', 'event-streams-key', '-c', CREDENTIALS_FILE, '-t', 'covsafe'
+    '-k', 'event-streams-key', '-c', CREDENTIALS_FILE, '-t', ES_TOPICS
   ])
 
   # create IBM Cloud Cloudant
+  # FIXME: might need to create index to avoid the query error
+  data = [
+    '../data/common/cloudant/notification-template.json;a_notification_template',
+    '../data/common/cloudant/view-config.json;view-config',
+    '../data/{}/cloudant/assets.json;assets'.format(args.tenant),
+    '../data/{}/cloudant/assets_staff.json;assets_staff'.format(args.tenant),
+    '../data/{}/cloudant/shops.json;shops'.format(args.tenant)
+  ]
   nosql.create([
     '-r', args.region, '-g', args.resource_group, '-p', 'lite', '-n', SERVICES['cloudant'],
-    '-k', 'cloudant-key', '-c', CREDENTIALS_FILE, '-b', ASSETS_DB,
-    '-d', '../data/{}/assets.json;{}'.format(args.tenant, ASSETS_DB)
+    '-k', 'cloudant-key', '-c', CREDENTIALS_FILE, '-b', CLOUDANT_DB,
+    '-d', ','.join(data)
   ])
 
   # create IBM Cloud Object Storage
   bucket = util.get_credentials_value(CREDENTIALS_FILE, UI_COMPONENTS_BUCKET)
+  cosdir = './data/tenants/{}/cos'.format(args.tenant)
+  files = [f for f in os.listdir(cosdir) if os.path.isfile(os.path.join(cosdir, f))]
+  data = ','.join(['{};{}'.format(x, bucket) for x in files])
+
   cos.create([
     '-r', args.region, '-g', args.resource_group, '-p', 'lite', '-n', SERVICES['cos'],
-    '-b', bucket,
-    '-d', '../data/{}/floormap.png;{}'.format(args.tenant, bucket),
-    '-k', 'cos-hmac', '-c', CREDENTIALS_FILE
+    '-k', 'cos-hmac', '-c', CREDENTIALS_FILE, '-b', bucket, '-d', data
   ])
 
   # create IBM App ID
   # should be later than deployment of UI, because it requires redirect URL
-  redirect_url = util.get_credentials_value(CREDENTIALS_FILE, COVSAFE_VIEW_REDIRECT_URL)
   app_id.create([
     '-r', args.region, '-g', args.resource_group, '-p', 'lite', '-n', SERVICES['app_id'],
-    '-e', 'OFF', '-u', redirect_url, '-a', 'covsafe-view',
+    '-e', 'OFF', '-u', view_api, '-a', APPID_REGISTERD_APP,
     '-s', 'user@fake.email:JamesSmith:password'
   ])
 
@@ -81,20 +98,23 @@ def create(args):
 def delete(args):
   args = parse_args(args)
   app_id.delete(['-n', SERVICES['app_id'], '-g', args.resource_group])
+
   bucket = util.get_credentials_value(CREDENTIALS_FILE, UI_COMPONENTS_BUCKET)
+  cosdir = './data/tenants/{}/cos'.format(args.tenant)
+  files = [f for f in os.listdir(cosdir) if os.path.isfile(os.path.join(cosdir, f))]
+  data = ','.join(['{};{}'.format(x, bucket) for x in files])
   cos.delete([
     '-n', SERVICES['cos'], '-g', args.resource_group, '-r', args.region,
-    '-b', bucket,
-    '-d', '../data/{}/floormap.png;{}'.format(args.tenant, bucket)
+    '-b', bucket, '-d', data
   ])
-  # nosql.delete(['-n', SERVICES['cloudant'], '-g', args.resource_group])
-  # es.create(['-n', SERVICES['event_streams'], '-g', args.resource_group])
+  nosql.delete(['-n', SERVICES['cloudant'], '-g', args.resource_group])
+  es.create(['-n', SERVICES['event_streams'], '-g', args.resource_group])
+  util.create_functions_namespace(COVSAFE_VIEW)
   post_delete()
 
 def init():
   with open(CREDENTIALS_FILE, 'w') as f:
     f.write('{}={}\n'.format(UI_COMPONENTS_BUCKET, str(uuid.uuid4())))
-    f.write('{}={}\n'.format(COVSAFE_VIEW_REDIRECT_URL, 'http://localhost:8080/callback'))
 
 def post_create():
   print('shomething new')

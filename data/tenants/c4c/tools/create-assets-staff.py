@@ -1,4 +1,4 @@
-# /*
+#
 # Copyright 2020 Hitachi Ltd.
  
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,7 +12,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-# */
+#
 
 #
 #
@@ -66,10 +66,8 @@ def main(dict):
 
     madeData = []
     for x in range(0, 17):
-        print(x)
         madeData.append(makeData(data["staff"], "staff", x)["returnVal"])
     for x in range(0, 3):
-        print(x)
         madeData.append(makeData(data["manager"], "manager", x)["returnVal"])
 
     return {"docs": json.dumps({"docs": (madeData)}),
@@ -99,6 +97,11 @@ def makeData(dict, typeA, x):
 
     return {"returnVal": sampleStaffData}
 
+
+if __name__ == "__main__":
+    assets = main({})
+    with open('../cloudant/assets_staff.json', 'w') as f:
+        f.write(json.dumps(json.loads(assets['docs'])['docs']))
 
 #     dataFormat = {
 #   "type": "",
