@@ -1,0 +1,318 @@
+{
+  "_id": "notification-template-v02",
+  "_rev": "5-34f318b74a5692ddc8aeb140e13e1f97",
+  "notifications": {
+    "en": {
+      "forCustomers": {
+        "general": {
+          "00": "Please maintain social distance.",
+          "01": "Please stand at the marked line.",
+          "02": "Please keep your mask in the store and sanitise your hands wherever it is possible.",
+          "03": "",
+          "04": "",
+          "05": ""
+        },
+        "congestion": {
+          "00": "Please do not stand in groups.",
+          "01": "In case of inconvenience, please ask the staff.",
+          "02": "",
+          "03": "",
+          "04": "",
+          "05": ""
+        },
+        "disinfection": {
+          "00": "",
+          "01": "",
+          "02": "",
+          "03": "",
+          "04": "",
+          "05": ""
+        },
+        "sanitisation": {
+          "00": "Please sanitise your hands before and after using the {objectO}.",
+          "01": "Please use the placed hand sanitiser, where ever needed.",
+          "02": "Please sanitise your hands before handling the doors.",
+          "03": "",
+          "04": "",
+          "05": ""
+        },
+        "toilet": {
+          "00": "There are many people in the toilet; please wait for a while before using it.",
+          "01": "Please keep social distance in the line at {areaA}.",
+          "02": "",
+          "03": "",
+          "04": "",
+          "05": ""
+        },
+        "garbage": {
+          "00": "",
+          "01": "",
+          "02": "",
+          "03": "",
+          "04": "",
+          "05": ""
+        }
+      },
+      "toStaff": {
+        "general": {
+          "00": "",
+          "01": "",
+          "02": "",
+          "03": "",
+          "04": "",
+          "05": ""
+        },
+        "congestion": {
+          "00": "{areaA} location is crowded for {timeT}. Please go and have a look.",
+          "01": "{areaA} location is crowded for {timeT}. Please slow down the billing at the counter",
+          "02": "The {areaA} has reached its safe capacity, please ask people to wait.",
+          "03": "",
+          "04": "",
+          "05": ""
+        },
+        "disinfection": {
+          "00": "{areaA} location was used by {peopleC}, please disinfect the tables.",
+          "01": "{areaA} location was used by {peopleC}, please disinfect the aisles.",
+          "02": "{areaA} location was used by {peopleC}, please disinfect the doors-handles.",
+          "03": "{areaA} - shopping-basket location was busy for {timeT}, please disinfect the area and the shopping basket.",
+          "04": "{areaA} location was used by {peopleC}, please disinfect the parking machine.",
+          "05": ""
+        },
+        "sanitisation": {
+          "00": "{peopleC} have washed their hands, please check the soap",
+          "01": "{peopleC} have washed their hands, please check the sanitizers",
+          "02": "",
+          "03": "",
+          "04": "",
+          "05": ""
+        },
+        "toilet": {
+          "00": "{peopleC} have used the toilet, please have a look/ disinfect",
+          "01": "{objectO} is finished, please go and check/replace",
+          "02": "{peopleC} are present inside the toilet, please ask people to wait outside",
+          "03": "",
+          "04": "",
+          "05": ""
+        },
+        "garbage": {
+          "00": "The garbage is full, please empty the garbage",
+          "01": "The garbage is almost full consider emptying the garbage",
+          "02": "The garbage  used {usageS}, please sanitize the area",
+          "03": "",
+          "04": "",
+          "05": ""
+        },
+        "individual": {
+          "00": "The risk around your work location has been hig for {timeT}, please go and sanitise your hands/gloves/protective gear",
+          "01": "you have been working for {timeT} without break, please take a break",
+          "02": "",
+          "03": "",
+          "04": "",
+          "05": ""
+        }
+      },
+      "toManager": {
+        "general": {
+          "00": "Total risk is highest today for the {weekW}",
+          "01": "Total risk is highest today for the {weekW}",
+          "02": "Individual risk is high today as compared to usual.",
+          "03": "Overall risk is high today as compared to usual.",
+          "04": "Totday was a good day in terms of store risk.",
+          "05": ""
+        },
+        "congestion": {
+          "00": "{areaA} area was most visited today, consider increasing the cleaning activity here",
+          "01": "{areaA} area was crowded please consider rearranging items",
+          "02": "The store risk is high in {placeP} area. Please have a look.",
+          "03": "The store risk is usually higher in {placeP} area/s.",
+          "04": "Sudden increase in congestion observed at these {placeP} and {timeT}",
+          "05": ""
+        },
+        "disinfection": {
+          "00": "{areaA} time was peak time, please consider having more cleaning staff",
+          "01": "High risk observed during {timeT}, consider scheduling disinfection activity at his time.",
+          "02": "Usage capacity of the {areaA} was more than the diinfection activity.",
+          "03": "",
+          "04": "",
+          "05": ""
+        },
+        "sanitisation": {
+          "00": "Staffs in this area face higher risk, please rotate staff roles regulary.",
+          "01": "Total hand was count today was very low.",
+          "02": "",
+          "03": "",
+          "04": "",
+          "05": ""
+        },
+        "toilet": {
+          "00": "",
+          "01": "",
+          "02": "",
+          "03": "",
+          "04": "",
+          "05": ""
+        },
+        "garbage": {
+          "00": "",
+          "01": "",
+          "02": "",
+          "03": "",
+          "04": "",
+          "05": ""
+        }
+      }
+    },
+    "jp": {
+      "forCustomers": {
+        "general": {
+          "00": "社会的距離を保ってください。",
+          "01": "マークされたラインに立ってください。",
+          "02": "マスクは店内に保管し、可能な限り手を消毒してください。",
+          "03": "",
+          "04": "",
+          "05": ""
+        },
+        "congestion": {
+          "00": "グループで立ってはいけません。",
+          "01": "ご迷惑をお掛けする場合は、スタッフまでお問い合わせください。",
+          "02": "",
+          "03": "",
+          "04": "",
+          "05": ""
+        },
+        "disinfection": {
+          "00": "",
+          "01": "",
+          "02": "",
+          "03": "",
+          "04": "",
+          "05": ""
+        },
+        "sanitisation": {
+          "00": "{objectO}を使用する前後に手を消毒してください。",
+          "01": "設置した手指消毒剤は、必要に応じてご使用ください。",
+          "02": "ドアを取り扱う前に手を消毒してください。",
+          "03": "",
+          "04": "",
+          "05": ""
+        },
+        "toilet": {
+          "00": "トイレにはたくさんの人がいます。しばらくお待ちください。",
+          "01": "{placeP}のラインの社交距離を維持してください。",
+          "02": "",
+          "03": "",
+          "04": "",
+          "05": ""
+        },
+        "garbage": {
+          "00": "",
+          "01": "",
+          "02": "",
+          "03": "",
+          "04": "",
+          "05": ""
+        }
+      },
+      "toStaff": {
+        "general": {
+          "00": "",
+          "01": "",
+          "02": "",
+          "03": "",
+          "04": "",
+          "05": ""
+        },
+        "congestion": {
+          "00": "{placeP}の場所は{timeT}のため混雑しています。是非行ってみてください。",
+          "01": "{placeP}の場所は{timeT}のため混雑しています。カウンターでの請求を遅くしてください",
+          "02": "{palceP}は安全な容量に達しました。お待ちください。",
+          "03": "",
+          "04": "",
+          "05": ""
+        },
+        "disinfection": {
+          "00": "{placeP}の場所は{peopleC}によって使用されました。テーブルを駆除してください。",
+          "01": "{placeP}の場所は{peopleC}によって使用されました。通路を駆除してください。",
+          "02": "{placeP}の場所は{peopleC}によって使用されました。ドアのハンドルを駆除してください。",
+          "03": "{placeP}の場所は{peopleC}によって使用されました。買い物かごを駆除してください。",
+          "04": "{placeP}の場所は{peopleC}によって使用されました。パーキングマシンを駆除してください。",
+          "05": ""
+        },
+        "sanitisation": {
+          "00": "{peopleC}は手を洗いました。石鹸を確認してください",
+          "01": "{peopleC}は手を洗いました。消毒剤を確認してください",
+          "02": "",
+          "03": "",
+          "04": "",
+          "05": ""
+        },
+        "toilet": {
+          "00": "{peopleC}はトイレを使用しました。見てください/消毒してください",
+          "01": "{objectO}が終了しました。移動して確認/交換してください",
+          "02": "{peopleC}がトイレの中にいます。外で待つように頼んでください",
+          "03": "",
+          "04": "",
+          "05": ""
+        },
+        "garbage": {
+          "00": "ごみがいっぱいです。ごみを空にしてください",
+          "01": "ゴミはほぼ一杯になっています",
+          "02": "使用されたゴミ{usageS}、エリアを消毒してください",
+          "03": "",
+          "04": "",
+          "05": ""
+        }
+      },
+      "toManager": {
+        "general": {
+          "00": "{weekW}の今日の合計リスクが最も高い",
+          "01": "{weekW}の今日の合計リスクが最も高い",
+          "02": "今日、個人のリスクは通常と比較して高くなっています。",
+          "03": "今日、全体的なリスクは通常と比較して高くなっています。",
+          "04": "店舗のリスクという点では、今日は良い日でした。",
+          "05": ""
+        },
+        "congestion": {
+          "00": "{areaA}エリアは本日最も訪問されました、ここで清掃活動を増やすことを検討してください",
+          "01": "{areaA}エリアが混雑していたため、アイテムの再配置をご検討ください",
+          "02": "{placeP}地域の店舗リスクが高い。ぜひご覧ください。",
+          "03": "店舗リスクは通常、{placeP}エリアで高くなります。",
+          "04": "これらの{placeP}および{timeT}で観測された、急激な輻輳の増加",
+          "05": ""
+        },
+        "disinfection": {
+          "00": "{areaA}の時間はピーク時間でした。清掃スタッフを増やすことを検討してください",
+          "01": "{timeT}の間に高リスクが観察された場合は、その時に消毒活動をスケジュールすることを検討してください。",
+          "02": "{areaA}の使用容量は、感染除去アクティビティよりも多くなっています。",
+          "03": "",
+          "04": "",
+          "05": ""
+        },
+        "sanitisation": {
+          "00": "この領域のスタッフはより高いリスクに直面しています。定期的にスタッフの役割をローテーションしてください。",
+          "01": "今日の合計手数は非常に少なかった。",
+          "02": "",
+          "03": "",
+          "04": "",
+          "05": ""
+        },
+        "toilet": {
+          "00": "",
+          "01": "",
+          "02": "",
+          "03": "",
+          "04": "",
+          "05": ""
+        },
+        "garbage": {
+          "00": "",
+          "01": "",
+          "02": "",
+          "03": "",
+          "04": "",
+          "05": ""
+        }
+      }
+    }
+  }
+}

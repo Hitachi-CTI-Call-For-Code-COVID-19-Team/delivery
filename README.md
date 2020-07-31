@@ -2,13 +2,21 @@
 
 ## Prerequisites
 
-Please install `pipenv`, `node`, and `npm`.
+Before deploying this application, please create your IBM Cloud resource group environment. Then, please clone our solution that consists of multiple repos in [Hitachi CTI Call For Code COVID-19 Team](https://github.com/Hitachi-CTI-Call-For-Code-COVID-19-Team). Here, we are under the assumption that you clone all repos within `/path/to/COVSAFE`.
 
-## How to Deploy
+In addition to above, please install `python`, `pipenv`, `node`, and `npm`. Those are required for building and deploying our application.
 
-Before deploying this application, please create your IBM Cloud resource group environment. Then, please clone our solution that consists of multiple repos in [GitHub covsafe](http://example.com).
+## Preparation
 
-Here, we are under the assumption that you clone all repos within `/path/to/covsafe`.
+Before building and deploying our application, you should create some configurations and assets.
+
+### Create assets
+
+
+
+
+## How to deploy
+
 
 1. Create IBM Cloud Functions Namespace
 
@@ -75,3 +83,33 @@ pipenv install
 # change some variables for your env, like resource group
 pipenv run python main.py -o delete -p covsafe -t c4c -r jp-tok -g c4c-civid-19
 ```
+
+
+
+Order
+
+- create configuration
+  - asset: configuration
+
+- create ui ns
+
+- create instances
+- create service keys
+- create database
+  - assets, assets_staff, view-config, log_risk_calculation, log_risk_notifier, a_notification_template, ads, shops
+- push initial data
+  - floormap.png
+  - assets.json
+  - view-config.json
+- need to create index to avoid the query error
+
+- app id secret info <- ui redirect URL
+
+db bucket
+
+- functions
+  - data-proxy api <- deploy before ui
+  - risk calculation/notifier
+
+- ui
+
