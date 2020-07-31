@@ -76,7 +76,7 @@ def create(args):
 
   # create IBM Cloud Object Storage
   bucket = util.get_credentials_value(CREDENTIALS_FILE, UI_COMPONENTS_BUCKET)
-  cosdir = './data/tenants/{}/cos'.format(args.tenant)
+  cosdir = '../data/tenants/{}/cos'.format(args.tenant)
   files = [f for f in os.listdir(cosdir) if os.path.isfile(os.path.join(cosdir, f))]
   data = ','.join(['{};{}'.format(x, bucket) for x in files])
 
