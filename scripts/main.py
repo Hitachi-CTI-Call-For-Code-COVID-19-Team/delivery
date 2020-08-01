@@ -11,7 +11,7 @@ import service_cloudant as nosql
 import service_event_streams as es
 
 CREDENTIALS_FILE = './.credentials'
-COVSAFE_VIEW = 'covsafe-view-test'
+COVSAFE_VIEW = 'covsafe-view'
 ES_TOPICS = 'covsafe'
 APPID_REGISTERED_APP = 'covsafe'
 APPID_REGISTERED_USER = 'user@fake.email:JamesSmith:password'
