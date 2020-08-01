@@ -82,7 +82,7 @@ def makeData(dict, typeA, x):
     dict0 = dict  # dict[target[0]]
     sampleStaffData = {
         "type": typeA,
-        "_id": dict0["id"][x],
+        # "_id": dict0["id"][x],
         "id": dict0["id"][x],
         # dict0["deviceId"][x],
         "deviceId":   ["E9B0E15F-19D0-4721-A7E4-DB6C0B220FB4"],
