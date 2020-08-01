@@ -41,7 +41,9 @@ def parse_args(args):
 def create(args):
   args = parse_args(args)
 
-  util.create_service_instance(args.instance_name, 'cloud-object-storage', args.service_plan, 'global')
+  util.create_service_instance(
+    args.instance_name, 'cloud-object-storage', args.service_plan, 'global', legacy=False
+  )
 
   tenant_id = util.get_tenant_id(args.instance_name)
 

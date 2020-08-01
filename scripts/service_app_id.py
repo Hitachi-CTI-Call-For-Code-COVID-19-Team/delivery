@@ -40,7 +40,7 @@ def parse_args(args):
     '''
   )
   parser.add_argument(
-    '-a', '--application-names', default='covsafe-view',
+    '-a', '--application-names', default='covsafe',
     help='''
     comma-separaqted application names registered to App ID.
     note that redirect URLs in the redirect-urls should be the URLs of this app,

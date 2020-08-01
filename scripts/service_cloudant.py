@@ -3,6 +3,7 @@ import subprocess
 import json
 import sys
 import re
+import time
 from os import path
 from cloudant.client import Cloudant
 import util
@@ -32,6 +33,10 @@ def create(args):
   args = parse_args(args)
 
   util.create_service_instance(args.instance_name, 'cloudantnosqldb', args.service_plan, args.region)
+  # sometimes craeting cloudant instance takes time so that should wait for a while
+  # FIXME: should check it's active or not, not waiting for fixed amount of time
+  print('wait for cloudant provisioning...')
+  time.sleep(40)
 
   wcred = util.create_service_credential(
     args.keyname_prefix, 'Writer', args.instance_name
@@ -49,10 +54,18 @@ def create(args):
     # get each from credentials
     url = wcred[0]['credentials']['url']
     m = re.match('https://(.*):(.*)@(.*)$', url)
-    sc_username = m.group(1)
-    sc_password = m.group(2)
-    sc_url = 'https://{}'.format(m.group(3))
+    if m is not None:
+      sc_username = m.group(1)
+      sc_password = m.group(2)
+      sc_url = 'https://{}'.format(m.group(3))
+    else:
+      sc_username = wcred[0]['credentials']['username']
+      sc_password = wcred[0]['credentials']['apikey']
+      sc_url = wcred[0]['credentials']['url']
 
+    print(sc_username)
+    print(sc_password)
+    print(sc_url)
     # create client
     client = Cloudant(sc_username, sc_password, url=sc_url)
     client.connect()
@@ -70,20 +83,28 @@ def create(args):
     # write data
     units = args.data.split(',')
     for unit in units:
-      file, dababase = unit.split(';')
+      file, database = unit.split(';')
       with open(file) as f:
         data = json.load(f)
       ret = client.get(database).bulk_docs(data)
       if len(ret) != len(data):
         print(util.bcolors.FAIL + 'might not write all data' + util.bcolors.ENDC)
         raise Exception('might not write all data')
-      
+
+      if 'error' in ret:
+        print(
+          util.bcolors.FAIL +
+          'failed to write data to {} due to {}'.format(database, ret.reason) +
+          util.bcolors.ENDC
+        )
+        raise Exception('failed to write data to {}'.format(database))
+
       check = list(filter(lambda x: x['ok'] is not True, ret))
       if len(check) != 0:
         print(util.bcolors.FAIL + 'failed to write some data' + util.bcolors.ENDC)
         raise Exception('failed to write some data')
 
-      print(util.bcolors.OKBLUE + 'write all data' + util.bcolors.ENDC)
+      print(util.bcolors.OKBLUE + 'write all data to {}'.format(database) + util.bcolors.ENDC)
 
     # closing
     client.disconnect()

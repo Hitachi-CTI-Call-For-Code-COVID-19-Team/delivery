@@ -26,7 +26,7 @@ def login(region, resource_group):
   subprocess.check_call(['ibmcloud', 'target', '-r', region, '-g', resource_group])
 
 
-def create_service_instance(instance_name, service, service_plan, region):
+def create_service_instance(instance_name, service, service_plan, region, legacy=True):
   print(bcolors.OKGREEN + 'Starting to create a instance {}'.format(instance_name) + bcolors.ENDC)
 
   p1 = subprocess.Popen(['ibmcloud', 'resource', 'service-instances'], stdout=subprocess.PIPE)
@@ -36,10 +36,11 @@ def create_service_instance(instance_name, service, service_plan, region):
 
   if int(res.decode('utf-8').strip()) == 0:
     # create an instance
+    legacyOption = ['-p', '{{"legacyCredentials": {}}}'.format('true' if legacy is True else 'false')]
     p1 = subprocess.Popen([
       'ibmcloud', 'resource', 'service-instance-create', instance_name, service,
-      service_plan, region, '-p', '{"legacyCredentials": false}'
-    ])
+      service_plan, region
+    ] + legacyOption)
     p1.communicate()
 
     if p1.returncode != 0:
@@ -132,6 +133,17 @@ def create_cloudant_credential(keyname_prefix, role, instance_name):
   sc_password = m.group(2)
   sc_url = 'https://{}'.format(m.group(3))
 
+  m = re.match('https://(.*):(.*)@(.*)$', url)
+  if m is not None:
+    sc_username = m.group(1)
+    sc_password = m.group(2)
+    sc_url = 'https://{}'.format(m.group(3))
+  else:
+    sc_username = cre[0]['credentials']['username']
+    sc_password = cre[0]['credentials']['apikey']
+    sc_url = cre[0]['credentials']['url']
+
+
   return sc_username, sc_password, sc_url
 
 def create_s3_hmac_credential(keyname_prefix, role, instance_name):
@@ -154,7 +166,7 @@ def delete_service_instance(instance_name, resource_group):
   p1 = subprocess.Popen(['ibmcloud', 'resource', 'service-instance', instance_name], stdout=subprocess.PIPE)
   p2 = subprocess.Popen(['awk', '-F:', '/^ID/ {print $9}'], stdin=p1.stdout, stdout=subprocess.PIPE)
   wait = p2.communicate()
-  if len(wait[0]) == 0:
+  if len(wait[0].decode('utf-8').strip()) == 0:
     print(bcolors.FAIL + 'no instance {}, skip this operation'.format(instance_name) + bcolors.ENDC)
     return
 
@@ -203,6 +215,7 @@ def get_functions_namespace_id(namespace):
   if len(id) == 0:
     print(bcolors.FAIL + 'cannot get id of {}'.format(namespace) + bcolors.ENDC)
     raise Exception('cannot get id of {}'.format(namespace))
+  print(bcolors.OKBLUE + 'id is {}'.format(id) + bcolors.ENDC)
 
   return id
 
@@ -572,7 +585,7 @@ def delete_objects(objects, region):
       obj[bucket] = [os.path.basename(f)]
   
   for key in obj.keys():
-    s = 'Objects=[' + ','.join([ '{{Key={}}}'.format(x) for x in obj[key] ]) + '],Quiet=false'
+    s = 'Objects=[' + ','.join([ '{{Key="{}"}}'.format(x) for x in obj[key] ]) + '],Quiet=false'
     p1 = subprocess.Popen([
         'ibmcloud', 'cos', 'delete-objects', '--bucket', key, '--delete', s,
         '--region', region
@@ -581,7 +594,7 @@ def delete_objects(objects, region):
 
     if p1.returncode != 0:
       print(
-        bcolors.FAIL + 'cannot delete keys {} due to {}'.format(obj[key], wait[0]) +
+        bcolors.FAIL + 'no keys in cos or cannot delete keys {} due to {}'.format(obj[key], wait[0]) +
         bcolors.ENDC
       )
     else:
@@ -603,12 +616,13 @@ def event_streams_init(instance_name, admin_url):
   else:
     print(wait[0].decode('utf-8'))
 
-def create_topic(topics, partitions=1):
+def create_topic(topics, partitions='1'):
   print(bcolors.OKGREEN + 'Starting to create topics {}'.format(topics) + bcolors.ENDC)
 
   p1 = subprocess.Popen(['ibmcloud', 'es', 'topics', '--json'], stdout=subprocess.PIPE)
   wait = p1.communicate()
-  alltopics = json.loads(wait[0].decode('utf-8'))
+  returned = wait[0].decode('utf-8').strip()
+  alltopics = [] if returned == 'null' else json.loads(returned)
   
   for topic in topics:
     if topic in alltopics:

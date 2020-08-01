@@ -1,6 +1,4 @@
 [{
-  "_id": "notification-template-v02",
-  "_rev": "5-34f318b74a5692ddc8aeb140e13e1f97",
   "notifications": {
     "en": {
       "forCustomers": {

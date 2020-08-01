@@ -1,1 +1,398 @@
-[{"type": "staff", "_id": "st0001", "id": "st0001", "deviceId": ["E9B0E15F-19D0-4721-A7E4-DB6C0B220FB4"], "roles": ["store-cleaning"], "belongs": "congestion-945-1200", "duration": {"slot": {"start": "18:00:00", "end": "20:00:00"}, "on_job": 20, "last_rest": 16}}, {"type": "staff", "_id": "st0002", "id": "st0002", "deviceId": ["E9B0E15F-19D0-4721-A7E4-DB6C0B220FB4"], "roles": ["ware-house", "store-cleaning", "aisle-arrangement"], "belongs": "congestion-810-1200", "duration": {"slot": {"start": "15:00:00", "end": "17:00:00"}, "on_job": 61, "last_rest": 51}}, {"type": "staff", "_id": "st0003", "id": "st0003", "deviceId": ["E9B0E15F-19D0-4721-A7E4-DB6C0B220FB4"], "roles": ["ware-house", "aisle-arrangement"], "belongs": "congestion-945-1620", "duration": {"slot": {"start": "10:00:00", "end": "12:00:00"}, "on_job": 80, "last_rest": 68}}, {"type": "staff", "_id": "st0004", "id": "st0004", "deviceId": ["E9B0E15F-19D0-4721-A7E4-DB6C0B220FB4"], "roles": ["ware-house", "toilet-cleaning"], "belongs": "congestion-742.5-1740", "duration": {"slot": {"start": "17:00:00", "end": "19:00:00"}, "on_job": 26, "last_rest": 108}}, {"type": "staff", "_id": "st0005", "id": "st0005", "deviceId": ["E9B0E15F-19D0-4721-A7E4-DB6C0B220FB4"], "roles": ["counter", "store-cleaning"], "belongs": "congestion-135-1740", "duration": {"slot": {"start": "11:00:00", "end": "13:00:00"}, "on_job": 47, "last_rest": 30}}, {"type": "staff", "_id": "st0006", "id": "st0006", "deviceId": ["E9B0E15F-19D0-4721-A7E4-DB6C0B220FB4"], "roles": ["ware-house"], "belongs": "congestion-742.5-1080", "duration": {"slot": {"start": "19:00:00", "end": "21:00:00"}, "on_job": 22, "last_rest": 76}}, {"type": "staff", "_id": "st0007", "id": "st0007", "deviceId": ["E9B0E15F-19D0-4721-A7E4-DB6C0B220FB4"], "roles": ["store-cleaning"], "belongs": "congestion-67.5-1320", "duration": {"slot": {"start": "16:00:00", "end": "18:00:00"}, "on_job": 90, "last_rest": 16}}, {"type": "staff", "_id": "st0008", "id": "st0008", "deviceId": ["E9B0E15F-19D0-4721-A7E4-DB6C0B220FB4"], "roles": ["toilet-cleaning", "aisle-arrangement"], "belongs": "congestion-67.5-1500", "duration": {"slot": {"start": "17:00:00", "end": "19:00:00"}, "on_job": 45, "last_rest": 12}}, {"type": "staff", "_id": "st0009", "id": "st0009", "deviceId": ["E9B0E15F-19D0-4721-A7E4-DB6C0B220FB4"], "roles": ["ware-house", "counter", "aisle-arrangement"], "belongs": "congestion-0-420", "duration": {"slot": {"start": "18:00:00", "end": "20:00:00"}, "on_job": 77, "last_rest": 24}}, {"type": "staff", "_id": "st0010", "id": "st0010", "deviceId": ["E9B0E15F-19D0-4721-A7E4-DB6C0B220FB4"], "roles": ["store-cleaning", "counter"], "belongs": "congestion-877.5-1140", "duration": {"slot": {"start": "9:00:00", "end": "11:00:00"}, "on_job": 40, "last_rest": 98}}, {"type": "staff", "_id": "st0011", "id": "st0011", "deviceId": ["E9B0E15F-19D0-4721-A7E4-DB6C0B220FB4"], "roles": ["ware-house", "store-cleaning"], "belongs": "congestion-810-1440", "duration": {"slot": {"start": "18:00:00", "end": "20:00:00"}, "on_job": 11, "last_rest": 56}}, {"type": "staff", "_id": "st0012", "id": "st0012", "deviceId": ["E9B0E15F-19D0-4721-A7E4-DB6C0B220FB4"], "roles": ["aisle-arrangement"], "belongs": "congestion-202.5-360", "duration": {"slot": {"start": "15:00:00", "end": "17:00:00"}, "on_job": 30, "last_rest": 79}}, {"type": "staff", "_id": "st0013", "id": "st0013", "deviceId": ["E9B0E15F-19D0-4721-A7E4-DB6C0B220FB4"], "roles": ["store-cleaning"], "belongs": "congestion-202.5-120", "duration": {"slot": {"start": "20:00:00", "end": "22:00:00"}, "on_job": 13, "last_rest": 7}}, {"type": "staff", "_id": "st0014", "id": "st0014", "deviceId": ["E9B0E15F-19D0-4721-A7E4-DB6C0B220FB4"], "roles": ["ware-house"], "belongs": "congestion-877.5-660", "duration": {"slot": {"start": "10:00:00", "end": "12:00:00"}, "on_job": 61, "last_rest": 116}}, {"type": "staff", "_id": "st0015", "id": "st0015", "deviceId": ["E9B0E15F-19D0-4721-A7E4-DB6C0B220FB4"], "roles": ["counter"], "belongs": "congestion-877.5-720", "duration": {"slot": {"start": "11:00:00", "end": "13:00:00"}, "on_job": 26, "last_rest": 68}}, {"type": "staff", "_id": "st0016", "id": "st0016", "deviceId": ["E9B0E15F-19D0-4721-A7E4-DB6C0B220FB4"], "roles": ["toilet-cleaning", "store-cleaning"], "belongs": "congestion-67.5-720", "duration": {"slot": {"start": "15:00:00", "end": "17:00:00"}, "on_job": 94, "last_rest": 55}}, {"type": "staff", "_id": "st0017", "id": "st0017", "deviceId": ["E9B0E15F-19D0-4721-A7E4-DB6C0B220FB4"], "roles": ["ware-house", "toilet-cleaning"], "belongs": "congestion-877.5-900", "duration": {"slot": {"start": "11:00:00", "end": "13:00:00"}, "on_job": 17, "last_rest": 92}}, {"type": "manager", "_id": "mg0001", "id": "mg0001", "deviceId": ["E9B0E15F-19D0-4721-A7E4-DB6C0B220FB4"], "roles": ["orders", "logistics", "customer-service"], "belongs": "imaginary-shopping-mall-2nd-floor", "duration": {"slot": {"start": "9:00:00", "end": "17:00:00"}, "on_job": 57, "last_rest": 84}}, {"type": "manager", "_id": "mg0002", "id": "mg0002", "deviceId": ["E9B0E15F-19D0-4721-A7E4-DB6C0B220FB4"], "roles": ["logistics", "customer-service"], "belongs": "imaginary-shopping-mall-1st-floor", "duration": {"slot": {"start": "14:00:00", "end": "22:00:00"}, "on_job": 54, "last_rest": 31}}, {"type": "manager", "_id": "mg0003", "id": "mg0003", "deviceId": ["E9B0E15F-19D0-4721-A7E4-DB6C0B220FB4"], "roles": ["logistics", "customer-service"], "belongs": "imaginary-shopping-mall-1st-floor", "duration": {"slot": {"start": "9:00:00", "end": "17:00:00"}, "on_job": 79, "last_rest": 48}}]
+[
+  {
+    "type": "staff",
+    "id": "st0001",
+    "deviceId": [
+      "E9B0E15F-19D0-4721-A7E4-DB6C0B220FB4"
+    ],
+    "roles": [
+      "store-cleaning"
+    ],
+    "belongs": "congestion-945-1200",
+    "duration": {
+      "slot": {
+        "start": "18:00:00",
+        "end": "20:00:00"
+      },
+      "on_job": 20,
+      "last_rest": 16
+    }
+  },
+  {
+    "type": "staff",
+    "id": "st0002",
+    "deviceId": [
+      "E9B0E15F-19D0-4721-A7E4-DB6C0B220FB4"
+    ],
+    "roles": [
+      "ware-house",
+      "store-cleaning",
+      "aisle-arrangement"
+    ],
+    "belongs": "congestion-810-1200",
+    "duration": {
+      "slot": {
+        "start": "15:00:00",
+        "end": "17:00:00"
+      },
+      "on_job": 61,
+      "last_rest": 51
+    }
+  },
+  {
+    "type": "staff",
+    "id": "st0003",
+    "deviceId": [
+      "E9B0E15F-19D0-4721-A7E4-DB6C0B220FB4"
+    ],
+    "roles": [
+      "ware-house",
+      "aisle-arrangement"
+    ],
+    "belongs": "congestion-945-1620",
+    "duration": {
+      "slot": {
+        "start": "10:00:00",
+        "end": "12:00:00"
+      },
+      "on_job": 80,
+      "last_rest": 68
+    }
+  },
+  {
+    "type": "staff",
+    "id": "st0004",
+    "deviceId": [
+      "E9B0E15F-19D0-4721-A7E4-DB6C0B220FB4"
+    ],
+    "roles": [
+      "ware-house",
+      "toilet-cleaning"
+    ],
+    "belongs": "congestion-742.5-1740",
+    "duration": {
+      "slot": {
+        "start": "17:00:00",
+        "end": "19:00:00"
+      },
+      "on_job": 26,
+      "last_rest": 108
+    }
+  },
+  {
+    "type": "staff",
+    "id": "st0005",
+    "deviceId": [
+      "E9B0E15F-19D0-4721-A7E4-DB6C0B220FB4"
+    ],
+    "roles": [
+      "counter",
+      "store-cleaning"
+    ],
+    "belongs": "congestion-135-1740",
+    "duration": {
+      "slot": {
+        "start": "11:00:00",
+        "end": "13:00:00"
+      },
+      "on_job": 47,
+      "last_rest": 30
+    }
+  },
+  {
+    "type": "staff",
+    "id": "st0006",
+    "deviceId": [
+      "E9B0E15F-19D0-4721-A7E4-DB6C0B220FB4"
+    ],
+    "roles": [
+      "ware-house"
+    ],
+    "belongs": "congestion-742.5-1080",
+    "duration": {
+      "slot": {
+        "start": "19:00:00",
+        "end": "21:00:00"
+      },
+      "on_job": 22,
+      "last_rest": 76
+    }
+  },
+  {
+    "type": "staff",
+    "id": "st0007",
+    "deviceId": [
+      "E9B0E15F-19D0-4721-A7E4-DB6C0B220FB4"
+    ],
+    "roles": [
+      "store-cleaning"
+    ],
+    "belongs": "congestion-67.5-1320",
+    "duration": {
+      "slot": {
+        "start": "16:00:00",
+        "end": "18:00:00"
+      },
+      "on_job": 90,
+      "last_rest": 16
+    }
+  },
+  {
+    "type": "staff",
+    "id": "st0008",
+    "deviceId": [
+      "E9B0E15F-19D0-4721-A7E4-DB6C0B220FB4"
+    ],
+    "roles": [
+      "toilet-cleaning",
+      "aisle-arrangement"
+    ],
+    "belongs": "congestion-67.5-1500",
+    "duration": {
+      "slot": {
+        "start": "17:00:00",
+        "end": "19:00:00"
+      },
+      "on_job": 45,
+      "last_rest": 12
+    }
+  },
+  {
+    "type": "staff",
+    "id": "st0009",
+    "deviceId": [
+      "E9B0E15F-19D0-4721-A7E4-DB6C0B220FB4"
+    ],
+    "roles": [
+      "ware-house",
+      "counter",
+      "aisle-arrangement"
+    ],
+    "belongs": "congestion-0-420",
+    "duration": {
+      "slot": {
+        "start": "18:00:00",
+        "end": "20:00:00"
+      },
+      "on_job": 77,
+      "last_rest": 24
+    }
+  },
+  {
+    "type": "staff",
+    "id": "st0010",
+    "deviceId": [
+      "E9B0E15F-19D0-4721-A7E4-DB6C0B220FB4"
+    ],
+    "roles": [
+      "store-cleaning",
+      "counter"
+    ],
+    "belongs": "congestion-877.5-1140",
+    "duration": {
+      "slot": {
+        "start": "9:00:00",
+        "end": "11:00:00"
+      },
+      "on_job": 40,
+      "last_rest": 98
+    }
+  },
+  {
+    "type": "staff",
+    "id": "st0011",
+    "deviceId": [
+      "E9B0E15F-19D0-4721-A7E4-DB6C0B220FB4"
+    ],
+    "roles": [
+      "ware-house",
+      "store-cleaning"
+    ],
+    "belongs": "congestion-810-1440",
+    "duration": {
+      "slot": {
+        "start": "18:00:00",
+        "end": "20:00:00"
+      },
+      "on_job": 11,
+      "last_rest": 56
+    }
+  },
+  {
+    "type": "staff",
+    "id": "st0012",
+    "deviceId": [
+      "E9B0E15F-19D0-4721-A7E4-DB6C0B220FB4"
+    ],
+    "roles": [
+      "aisle-arrangement"
+    ],
+    "belongs": "congestion-202.5-360",
+    "duration": {
+      "slot": {
+        "start": "15:00:00",
+        "end": "17:00:00"
+      },
+      "on_job": 30,
+      "last_rest": 79
+    }
+  },
+  {
+    "type": "staff",
+    "id": "st0013",
+    "deviceId": [
+      "E9B0E15F-19D0-4721-A7E4-DB6C0B220FB4"
+    ],
+    "roles": [
+      "store-cleaning"
+    ],
+    "belongs": "congestion-202.5-120",
+    "duration": {
+      "slot": {
+        "start": "20:00:00",
+        "end": "22:00:00"
+      },
+      "on_job": 13,
+      "last_rest": 7
+    }
+  },
+  {
+    "type": "staff",
+    "id": "st0014",
+    "deviceId": [
+      "E9B0E15F-19D0-4721-A7E4-DB6C0B220FB4"
+    ],
+    "roles": [
+      "ware-house"
+    ],
+    "belongs": "congestion-877.5-660",
+    "duration": {
+      "slot": {
+        "start": "10:00:00",
+        "end": "12:00:00"
+      },
+      "on_job": 61,
+      "last_rest": 116
+    }
+  },
+  {
+    "type": "staff",
+    "id": "st0015",
+    "deviceId": [
+      "E9B0E15F-19D0-4721-A7E4-DB6C0B220FB4"
+    ],
+    "roles": [
+      "counter"
+    ],
+    "belongs": "congestion-877.5-720",
+    "duration": {
+      "slot": {
+        "start": "11:00:00",
+        "end": "13:00:00"
+      },
+      "on_job": 26,
+      "last_rest": 68
+    }
+  },
+  {
+    "type": "staff",
+    "id": "st0016",
+    "deviceId": [
+      "E9B0E15F-19D0-4721-A7E4-DB6C0B220FB4"
+    ],
+    "roles": [
+      "toilet-cleaning",
+      "store-cleaning"
+    ],
+    "belongs": "congestion-67.5-720",
+    "duration": {
+      "slot": {
+        "start": "15:00:00",
+        "end": "17:00:00"
+      },
+      "on_job": 94,
+      "last_rest": 55
+    }
+  },
+  {
+    "type": "staff",
+    "id": "st0017",
+    "deviceId": [
+      "E9B0E15F-19D0-4721-A7E4-DB6C0B220FB4"
+    ],
+    "roles": [
+      "ware-house",
+      "toilet-cleaning"
+    ],
+    "belongs": "congestion-877.5-900",
+    "duration": {
+      "slot": {
+        "start": "11:00:00",
+        "end": "13:00:00"
+      },
+      "on_job": 17,
+      "last_rest": 92
+    }
+  },
+  {
+    "type": "manager",
+    "id": "mg0001",
+    "deviceId": [
+      "E9B0E15F-19D0-4721-A7E4-DB6C0B220FB4"
+    ],
+    "roles": [
+      "orders",
+      "logistics",
+      "customer-service"
+    ],
+    "belongs": "imaginary-shopping-mall-2nd-floor",
+    "duration": {
+      "slot": {
+        "start": "9:00:00",
+        "end": "17:00:00"
+      },
+      "on_job": 57,
+      "last_rest": 84
+    }
+  },
+  {
+    "type": "manager",
+    "id": "mg0002",
+    "deviceId": [
+      "E9B0E15F-19D0-4721-A7E4-DB6C0B220FB4"
+    ],
+    "roles": [
+      "logistics",
+      "customer-service"
+    ],
+    "belongs": "imaginary-shopping-mall-1st-floor",
+    "duration": {
+      "slot": {
+        "start": "14:00:00",
+        "end": "22:00:00"
+      },
+      "on_job": 54,
+      "last_rest": 31
+    }
+  },
+  {
+    "type": "manager",
+    "id": "mg0003",
+    "deviceId": [
+      "E9B0E15F-19D0-4721-A7E4-DB6C0B220FB4"
+    ],
+    "roles": [
+      "logistics",
+      "customer-service"
+    ],
+    "belongs": "imaginary-shopping-mall-1st-floor",
+    "duration": {
+      "slot": {
+        "start": "9:00:00",
+        "end": "17:00:00"
+      },
+      "on_job": 79,
+      "last_rest": 48
+    }
+  }
+]

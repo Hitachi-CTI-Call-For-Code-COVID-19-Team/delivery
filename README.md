@@ -41,7 +41,7 @@ python3 create-assets-staff.py
 
 ## How to deploy
 
-1. Do commands below and have a coffee break. It creates almost services that we use in IBM Cloud.
+1. Do commands below and have a coffee break. It creates almost services that we use in IBM Cloud. Note that it's creating paid serivces, like Event Streams since it's not given in some regions at free.
 
 ```sh
 export APIKEY=${YOUR_API_KEY}
@@ -50,7 +50,11 @@ cd scripts
 pipenv install
 
 # change some variables for your env, like resource group
-pipenv run python main.py -o create -p covsafe -t c4c -r jp-tok -g covid-19-dev
+# not frequent, but I got an error below sometimes when launching the Cloudant
+# since IBM Cloud takes time for the Cloudant instance provisioning.
+# just re-run the same command when getting the error after a while.
+# "Error response from server. Status code: 400; description: 400 The resource instance is removed/invalid."
+pipenv run python main.py -o create -p covsafe -t c4c -r jp-tok -g covid-19-dev -l standard
 ```
 
 2. Deploy Push Notifications
@@ -66,10 +70,7 @@ See README of each repo to get known how to buid and deploy the functions. All f
 - [data-proxy](https://github.com/Hitachi-CTI-Call-For-Code-COVID-19-Team/data-proxy#how-to-deploy-the-data-proxy)
   - assumes in `/path/to/COVSAFE/data-proxy`  localy
   - required secrets
-    - CLOUDANT_WRITER_CREDENTIALS
-    - CLOUDANT_READER_CREDENTIALS
-    - COS_READER_CREDENTIALS
-    - COS_WRITER_CREDENTIALS
+    - N/A (just use names of service credentials. so just follow the instraction without any copy and paste)
 - [risk-calculator](https://github.com/Hitachi-CTI-Call-For-Code-COVID-19-Team/risk-calculator#implementation-steps)
   - assumes in `/path/to/COVSAFE/risk-calculator` localy
   - required secrets
